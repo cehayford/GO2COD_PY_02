@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
+</head>
+<body>
+    <h1>Web Scraper</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="url">Enter URL to scrape:</label><br>
+        <input type="text" id="url" name="url" required><br><br>
+        <input type="submit" value="Scrape">
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if data %}
+        <h2>Scraped Data:</h2>
+        <ul>
+            {% for item in data %}
+                <li><strong>{{ item.headline }}</strong>: {{ item.price }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
