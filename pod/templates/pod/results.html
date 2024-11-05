@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="mb-6">
+        <a href="{% url 'scrape' %}" 
+           class="text-blue-600 hover:text-blue-800 flex items-center">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            Back to Scraper
+        </a>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h1 class="text-2xl font-bold mb-2">{{ data.title }}</h1>
+        <a href="{{ data.url }}" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="text-blue-600 hover:text-blue-800 text-sm">
+            {{ data.url }}
+        </a>
+        <p class="text-sm text-gray-500 mt-2">
+            Scraped on {{ data.created_at|date:"F j, Y, g:i a" }}
+        </p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold mb-4">Scraped Content</h2>
+        
+        {% if data.content %}
+            {% for content_block in data.content_blocks %}
+            <div class="mb-8 border-b border-gray-200 pb-6">
+                {% if content_block.headline %}
+                <h3 class="text-lg font-medium text-gray-900 mb-2">
+                    {{ content_block.headline }}
+                </h3>
+                {% endif %}
+                
+                {% if content_block.span %}
+                <div class="text-sm text-gray-600 mb-2">
+                    {{ content_block.span }}
+                </div>
+                {% endif %}
+                
+                {% if content_block.paragraph %}
+                <div class="text-gray-700 leading-relaxed">
+                    {{ content_block.paragraph }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-gray-600">No content was found on this page.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

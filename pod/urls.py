@@ -1,14 +1,7 @@
 from django.urls import path
-from .views import scrape
+from . import views
 
 urlpatterns = [
-    path('', scrape, name='scrape'),  # Update this to the root of the app
+    path('', views.scrape, name='scrape'),
+    path('results/<int:pk>/', views.results, name='scraping_results'),
 ]
-
-
-# from django.urls import path
-# from .views import scrape_view
-
-# urlpatterns = [
-#     path('scrape/', scrape_view, name='scrape_view'),
-# ]
