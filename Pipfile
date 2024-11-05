@@ -8,6 +8,8 @@ djangorestframework = "*"
 beautifulsoup4 = "*"
 requests = "*"
 bs4 = "*"
+gunicorn = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
