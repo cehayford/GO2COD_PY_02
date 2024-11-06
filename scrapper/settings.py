@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'scrappy_db',
         'USER': 'scrappy_db_zq1j_user',
         'PASSWORD': 'SdkTrIItrh8kw4wucMaDMbm1srj2B6ip',
-        'HOST': 'localhost',
+        'HOST': '0.0.0.0',
         'PORT': '5432',
 
         # 'NAME': BASE_DIR / 'db.sqlite3',
