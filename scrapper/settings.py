@@ -78,17 +78,22 @@ WSGI_APPLICATION = 'scrapper.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'scrappy_db',
-        'USER': 'scrappy_db_zq1j_user',
-        'PASSWORD': 'SdkTrIItrh8kw4wucMaDMbm1srj2B6ip',
-        'HOST': '0.0.0.0',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
-        # 'NAME': BASE_DIR / 'db.sqlite3',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'scrappy_db',
+#         'USER': 'scrappy_db_zq1j_user',
+#         'PASSWORD': 'SdkTrIItrh8kw4wucMaDMbm1srj2B6ip',
+#         'HOST': '0.0.0.0',
+#         'PORT': '5432',
         
-        }
-        }
+#         }
+#         }
 
 
 # Password validation
