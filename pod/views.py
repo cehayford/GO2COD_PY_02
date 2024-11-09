@@ -69,9 +69,6 @@ def scrape(request):
     return render(request, 'pod/entrypage.html', {'recent_scrapes': recent_scrapes})
 
 def results(request, pk):
-    """
-    View function to display scraping results.
-    """
     try:
         scrapped_data = scrapy.objects.get(pk=pk)
         return render(request, 'pod/results.html', {'data': scrapped_data})
