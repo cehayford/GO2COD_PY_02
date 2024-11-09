@@ -10,32 +10,32 @@ class Scrappeddata(models.Model):
         return self.url
 
 
-    # @property
-    # def content_blocks(self):
-    #     """Parse the content string into blocks for template display"""
-    #     try:
-    #         # Split content by double newlines (assuming this format from the scraper)
-    #         blocks = self.content.split('\n\n')
-    #         parsed_blocks = []
+    @property
+    def content_blocks(self):
+        """Parse the content string into blocks for template display"""
+        try:
+            # Split content by double newlines (assuming this format from the scraper)
+            blocks = self.content.split('\n\n')
+            parsed_blocks = []
             
-    #         for block in blocks:
-    #             if not block.strip():
-    #                 continue
+            for block in blocks:
+                if not block.strip():
+                    continue
                     
-    #             block_data = {}
-    #             lines = block.split('\n')
+                block_data = {}
+                lines = block.split('\n')
                 
-    #             for line in lines:
-    #                 if line.startswith('Headline: '):
-    #                     block_data['headline'] = line[10:]
-    #                 elif line.startswith('Span: '):
-    #                     block_data['span'] = line[6:]
-    #                 elif line.startswith('Paragraph: '):
-    #                     block_data['paragraph'] = line[11:]
+                for line in lines:
+                    if line.startswith('Headline: '):
+                        block_data['headline'] = line[10:]
+                    elif line.startswith('Span: '):
+                        block_data['span'] = line[6:]
+                    elif line.startswith('Paragraph: '):
+                        block_data['paragraph'] = line[11:]
                 
-    #             if block_data:
-    #                 parsed_blocks.append(block_data)
+                if block_data:
+                    parsed_blocks.append(block_data)
                     
-    #         return parsed_blocks
-    #     except Exception:
-    #         return []
+            return parsed_blocks
+        except Exception:
+            return []

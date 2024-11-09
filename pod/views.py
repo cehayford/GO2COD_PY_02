@@ -71,6 +71,7 @@ def scrape(request):
 def results(request, pk):
     try:
         scrapped_data = scrapy.objects.get(pk=pk)
+        print(scrapped_data.content + "temi")
         return render(request, 'pod/results.html', {'data': scrapped_data})
     except scrapy.DoesNotExist:
         messages.error(request, 'Requested scrape data not found.')
