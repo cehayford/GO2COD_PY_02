@@ -65,7 +65,7 @@ def scrape(request):
             messages.error(request, 'An unexpected error occurred. Please try again later.')
     
     # Get recent scrapes for display
-    recent_scrapes = scrapy.objects.all().order_by('created_at')[:5]
+    recent_scrapes = scrapy.objects.all()
     return render(request, 'pod/entrypage.html', {'recent_scrapes': recent_scrapes})
 
 def results(request, pk):
